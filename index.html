@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luxury Login & Register</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <!-- LOGIN -->
+        <div class="form-box login">
+            <h2>Welcome Back</h2>
+            <p>Login to your account</p>
+
+            <div class="input-box">
+                <i class="fa fa-envelope"></i>
+                <input type="email" id="loginEmail" placeholder="Email">
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Password">
+            </div>
+
+            <a href="#" class="forgot">Forgot password?</a>
+
+            <button onclick="login()">Login</button>
+
+            <div class="google-btn">
+                <i class="fab fa-google"></i>
+                Login with Google
+            </div>
+
+            <p id="error-msg"></p>
+
+            <div class="social">
+                <a href="https://www.instagram.com/loa8r?igsh=aGRkdHU3cDZ5enM3" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://t.me/loa8r" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+
+            <span>Don't have an account?
+                <a href="#" onclick="toggle()">Register</a>
+            </span>
+        </div>
+
+        <!-- REGISTER -->
+        <div class="form-box register">
+            <h2>Create Account</h2>
+            <p>Join us today</p>
+
+            <div class="input-box">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Full Name">
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-envelope"></i>
+                <input type="email" placeholder="Email">
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" placeholder="Password">
+            </div>
+
+            <button>Register</button>
+
+            <div class="social">
+                <a href="https://www.instagram.com/loa8r?igsh=aGRkdHU3cDZ5enM3" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://t.me/loa8r" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+
+            <span>Already have an account?
+                <a href="#" onclick="toggle()">Login</a>
+            </span>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function toggle(){
+    document.querySelector('.card').classList.toggle('active');
+}
+
+function login(){
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const msg = document.getElementById('error-msg');
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    msg.style.color = "#ffb3b3";
+
+    if(email === "" || password === ""){
+        msg.innerText = "Please fill all fields";
+        return;
+    }
+
+    if(!emailPattern.test(email)){
+        msg.innerText = "Invalid email address";
+        return;
+    }
+
+    msg.style.color = "#a6ffcb";
+    msg.innerText = "Login successful ✔";
+
+    setTimeout(()=>{
+        document.getElementById('loginEmail').value = "";
+        document.getElementById('loginPassword').value = "";
+        msg.innerText = "";
+    },1500);
+}
+</script>
+
+</body>
+</html>
